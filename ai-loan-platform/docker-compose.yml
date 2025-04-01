@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: loan-platform-backend
+    restart: always
+    environment:
+      - FLASK_APP=run.py
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/loan_platform
+      - SECRET_KEY=${SECRET_KEY}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - DIGILOCKER_CLIENT_ID=${DIGILOCKER_CLIENT_ID}
+      - DIGILOCKER_CLIENT_SECRET=${DIGILOCKER_CLIENT_SECRET}
+      - RAZORPAY_KEY_ID=${RAZORPAY_KEY_ID}
+      - RAZORPAY_KEY_SECRET=${RAZORPAY_KEY_SECRET}
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - ./backend/reports:/app/reports
+      - ./backend/logs:/app/logs
+    depends_on:
+      - db
+    networks:
+      - loan-platform-network
+
+  db:
+    image: postgres:13-alpine
+    container_name: loan-platform-db
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=loan_platform
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - loan-platform-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: loan-platform-nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
+      - ./frontend:/usr/share/nginx/html
+      - ./backend/uploads:/usr/share/nginx/uploads
+      - ./backend/reports:/usr/share/nginx/reports
+    depends_on:
+      - backend
+    networks:
+      - loan-platform-network
+
+volumes:
+  postgres_data:
+
+networks:
+  loan-platform-network:
+    driver: bridge
