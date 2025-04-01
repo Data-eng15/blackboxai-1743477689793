@@ -1,0 +1,181 @@
+{
+    "monitoring": {
+        "interval": 60,
+        "log_dir": "logs",
+        "metrics_retention_days": 30,
+        "report_interval": 3600,
+        "thresholds": {
+            "cpu": {
+                "warning": 70,
+                "critical": 85
+            },
+            "memory": {
+                "warning": 75,
+                "critical": 90
+            },
+            "disk": {
+                "warning": 80,
+                "critical": 90
+            },
+            "api_response_time": {
+                "warning": 1.0,
+                "critical": 2.0
+            },
+            "error_rate": {
+                "warning": 0.01,
+                "critical": 0.05
+            },
+            "concurrent_users": {
+                "warning": 1000,
+                "critical": 2000
+            }
+        }
+    },
+    "alerts": {
+        "email": {
+            "enabled": true,
+            "smtp_host": "smtp.gmail.com",
+            "smtp_port": 587,
+            "smtp_username": "alerts@your-domain.com",
+            "smtp_password": "${SMTP_PASSWORD}",
+            "from_email": "alerts@your-domain.com",
+            "recipients": [
+                "admin@your-domain.com",
+                "support@your-domain.com"
+            ]
+        },
+        "slack": {
+            "enabled": true,
+            "webhook_url": "${SLACK_WEBHOOK_URL}",
+            "default_channel": "#monitoring",
+            "username": "AI Loan Platform Monitor",
+            "icon_emoji": ":warning:"
+        },
+        "telegram": {
+            "enabled": true,
+            "bot_token": "${TELEGRAM_BOT_TOKEN}",
+            "chat_id": "${TELEGRAM_CHAT_ID}"
+        }
+    },
+    "visualization": {
+        "plots": {
+            "system_metrics": {
+                "enabled": true,
+                "update_interval": 300,
+                "history_hours": 24
+            },
+            "process_metrics": {
+                "enabled": true,
+                "update_interval": 300,
+                "history_hours": 24
+            },
+            "alerts": {
+                "enabled": true,
+                "update_interval": 3600,
+                "history_days": 7
+            }
+        },
+        "reports": {
+            "daily": {
+                "enabled": true,
+                "time": "00:00",
+                "format": "html",
+                "recipients": [
+                    "admin@your-domain.com"
+                ]
+            },
+            "weekly": {
+                "enabled": true,
+                "day": "monday",
+                "time": "00:00",
+                "format": "html",
+                "recipients": [
+                    "admin@your-domain.com",
+                    "management@your-domain.com"
+                ]
+            }
+        }
+    },
+    "logging": {
+        "level": "INFO",
+        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        "date_format": "%Y-%m-%d %H:%M:%S",
+        "file": {
+            "enabled": true,
+            "path": "logs/monitoring.log",
+            "max_size": 10485760,
+            "backup_count": 5
+        },
+        "syslog": {
+            "enabled": false,
+            "host": "localhost",
+            "port": 514,
+            "facility": "local0"
+        }
+    },
+    "health_checks": {
+        "api": {
+            "enabled": true,
+            "endpoints": [
+                {
+                    "url": "/api/health",
+                    "method": "GET",
+                    "expected_status": 200,
+                    "timeout": 5
+                }
+            ],
+            "interval": 60
+        },
+        "database": {
+            "enabled": true,
+            "interval": 60,
+            "timeout": 5
+        },
+        "redis": {
+            "enabled": true,
+            "interval": 60,
+            "timeout": 5
+        }
+    },
+    "metrics_collection": {
+        "system": {
+            "enabled": true,
+            "interval": 60,
+            "metrics": [
+                "cpu_usage",
+                "memory_usage",
+                "disk_usage",
+                "network_io",
+                "system_load"
+            ]
+        },
+        "application": {
+            "enabled": true,
+            "interval": 60,
+            "metrics": [
+                "request_count",
+                "error_count",
+                "response_time",
+                "active_users",
+                "loan_applications"
+            ]
+        },
+        "custom": {
+            "enabled": true,
+            "metrics": [
+                {
+                    "name": "loan_approval_rate",
+                    "type": "gauge",
+                    "interval": 300,
+                    "description": "Rate of loan approvals"
+                },
+                {
+                    "name": "document_verification_time",
+                    "type": "histogram",
+                    "interval": 60,
+                    "description": "Time taken for document verification"
+                }
+            ]
+        }
+    }
+}
