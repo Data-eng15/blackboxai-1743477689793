@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Report - AI Loan Approval Platform</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Post-payment specific styles */
+        .thank-you-banner {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: var(--text-white);
+            padding: 3rem 2rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .report-section {
+            background-color: var(--bg-primary);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--primary-blue);
+            color: var(--text-white);
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: var(--secondary-blue);
+        }
+
+        .report-content {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: var(--bg-secondary);
+            border-radius: 0.5rem;
+        }
+
+        .analysis-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .analysis-item:last-child {
+            border-bottom: none;
+        }
+
+        .analysis-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .analysis-value {
+            color: var(--text-secondary);
+        }
+
+        .score-indicator {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .score-bar {
+            flex-grow: 1;
+            height: 0.5rem;
+            background-color: var(--bg-tertiary);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .score-fill {
+            height: 100%;
+            background-color: var(--primary-green);
+            border-radius: 1rem;
+        }
+
+        .lender-card {
+            background-color: var(--bg-primary);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+
+        .lender-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .lender-logo {
+            width: 120px;
+            height: 40px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        .lender-info {
+            margin: 1rem 0;
+        }
+
+        .lender-detail {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--accent);
+            color: var(--text-white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .assistance-card {
+            background-color: var(--bg-secondary);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .assistance-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">LoanAI</a>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="#" class="nav-link">Profile</a>
+                <a href="#" class="nav-link">Support</a>
+                <a href="#" class="nav-cta">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container" style="padding-top: 100px; padding-bottom: 50px;">
+        <!-- Thank You Banner -->
+        <div class="thank-you-banner">
+            <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+            <h1 class="text-3xl font-bold mb-2">Thank You for Your Payment!</h1>
+            <p>Your detailed loan report and lender contact information are now available below</p>
+        </div>
+
+        <!-- Detailed Loan Report -->
+        <div class="report-section">
+            <div class="flex justify-between items-center">
+                <h2 class="text-2xl font-semibold">Detailed AI Loan Analysis Report</h2>
+                <a href="#" class="download-btn">
+                    <i class="fas fa-download"></i>
+                    Download Report (PDF)
+                </a>
+            </div>
+
+            <div class="report-content">
+                <div class="analysis-item">
+                    <div class="analysis-label">Overall Creditworthiness Score</div>
+                    <div class="score-indicator">
+                        <div class="score-bar">
+                            <div class="score-fill" style="width: 85%;"></div>
+                        </div>
+                        <div class="font-semibold">85/100</div>
+                    </div>
+                    <div class="analysis-value">
+                        Excellent creditworthiness based on your income stability, credit history, and debt-to-income ratio.
+                    </div>
+                </div>
+
+                <div class="analysis-item">
+                    <div class="analysis-label">Income Analysis</div>
+                    <div class="analysis-value">
+                        <ul class="list-disc list-inside">
+                            <li>Monthly income shows consistent growth over the past 12 months</li>
+                            <li>Income sources are well-diversified</li>
+                            <li>Employment tenure indicates job stability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="analysis-item">
+                    <div class="analysis-label">Debt Service Coverage Ratio</div>
+                    <div class="score-indicator">
+                        <div class="score-bar">
+                            <div class="score-fill" style="width: 75%;"></div>
+                        </div>
+                        <div class="font-semibold">2.5x</div>
+                    </div>
+                    <div class="analysis-value">
+                        Your current income can comfortably support the proposed loan EMI payments.
+                    </div>
+                </div>
+
+                <div class="analysis-item">
+                    <div class="analysis-label">Risk Assessment</div>
+                    <div class="analysis-value">
+                        <p class="mb-2">Low Risk Profile based on:</p>
+                        <ul class="list-disc list-inside">
+                            <li>Clean credit history</li>
+                            <li>Strong repayment capacity</li>
+                            <li>Stable employment record</li>
+                            <li>Positive banking transaction patterns</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lender Contact Details -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-4">Connect with Our Lending Partners</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- HDFC Bank -->
+                <div class="lender-card">
+                    <img src="https://logo.clearbit.com/hdfcbank.com" alt="HDFC Bank" class="lender-logo">
+                    <h3 class="text-xl font-semibold">HDFC Bank</h3>
+                    <div class="lender-info">
+                        <div class="lender-detail">
+                            <i class="fas fa-user"></i>
+                            <span>Mr. Rajesh Kumar</span>
+                        </div>
+                        <div class="lender-detail">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="lender-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>loans.hdfc@example.com</span>
+                        </div>
+                    </div>
+                    <p class="mb-4">Offering competitive interest rates starting from 10.5% p.a. with flexible tenure options.</p>
+                    <a href="#" class="contact-btn">
+                        <i class="fas fa-handshake"></i>
+                        Contact Now
+                    </a>
+                </div>
+
+                <!-- ICICI Bank -->
+                <div class="lender-card">
+                    <img src="https://logo.clearbit.com/icicibank.com" alt="ICICI Bank" class="lender-logo">
+                    <h3 class="text-xl font-semibold">ICICI Bank</h3>
+                    <div class="lender-info">
+                        <div class="lender-detail">
+                            <i class="fas fa-user"></i>
+                            <span>Ms. Priya Sharma</span>
+                        </div>
+                        <div class="lender-detail">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43211</span>
+                        </div>
+                        <div class="lender-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>loans.icici@example.com</span>
+                        </div>
+                    </div>
+                    <p class="mb-4">Special offers for salaried professionals with interest rates from 11% p.a.</p>
+                    <a href="#" class="contact-btn">
+                        <i class="fas fa-handshake"></i>
+                        Contact Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Further Assistance -->
+        <div class="assistance-card">
+            <i class="fas fa-headset assistance-icon"></i>
+            <h2 class="text-xl font-semibold mb-2">Need Further Assistance?</h2>
+            <p class="mb-4">Our loan advisors are here to help you make the best decision</p>
+            <p class="text-lg font-semibold">Contact us at:</p>
+            <p>support@loanai.com | +91 1800 123 4567</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 LoanAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
