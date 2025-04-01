@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Loan Approval Platform</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Dashboard specific styles */
+        .status-banner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: var(--text-white);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .status-label {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%);
+        }
+
+        .timeline-point {
+            position: relative;
+            z-index: 1;
+            background-color: var(--primary-blue);
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-point.active {
+            background-color: var(--accent);
+        }
+
+        .timeline-point.completed {
+            background-color: var(--primary-green);
+        }
+
+        .loan-offer {
+            background-color: var(--bg-primary);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+        }
+
+        .offer-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .offer-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .offer-label {
+            color: var(--text-secondary);
+        }
+
+        .offer-value {
+            font-weight: 600;
+        }
+
+        .payment-section {
+            background-color: var(--bg-secondary);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .payment-amount {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .notification {
+            background-color: var(--bg-primary);
+            border-left: 4px solid var(--primary-blue);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+        }
+
+        .notification-time {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">LoanAI</a>
+            <div class="nav-links">
+                <a href="#" class="nav-link">Dashboard</a>
+                <a href="#" class="nav-link">Profile</a>
+                <a href="#" class="nav-link">Support</a>
+                <a href="#" class="nav-cta">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container" style="padding-top: 100px; padding-bottom: 50px;">
+        <!-- Status Banner -->
+        <div class="status-banner">
+            <div class="status-label">Processing</div>
+            <h1 class="text-2xl font-bold mb-2">Application Status</h1>
+            <p>Submitted on January 15, 2024 at 10:30 AM</p>
+            
+            <div class="timeline">
+                <div class="timeline-point completed" title="Submitted">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="timeline-point active" title="Processing">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <div class="timeline-point" title="Offer Available">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <div class="timeline-point" title="Completed">
+                    <i class="fas fa-flag-checkered"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tentative Loan Offer -->
+        <div class="loan-offer">
+            <h2 class="text-xl font-semibold mb-4">Your Tentative Loan Offer</h2>
+            <div class="offer-amount">₹5,00,000</div>
+            
+            <div class="offer-details">
+                <div class="offer-detail">
+                    <span class="offer-label">Tentative Interest Rate</span>
+                    <span class="offer-value">10.5% p.a.</span>
+                </div>
+                <div class="offer-detail">
+                    <span class="offer-label">Loan Tenure</span>
+                    <span class="offer-value">36 Months</span>
+                </div>
+                <div class="offer-detail">
+                    <span class="offer-label">EMI Amount</span>
+                    <span class="offer-value">₹16,190/month</span>
+                </div>
+            </div>
+
+            <div class="mt-6">
+                <h3 class="text-lg font-semibold mb-2">Key Factors Influencing This Offer</h3>
+                <ul class="list-disc list-inside text-gray-600">
+                    <li>Excellent credit history</li>
+                    <li>Stable employment record</li>
+                    <li>Good debt-to-income ratio</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Payment Section -->
+        <div class="payment-section">
+            <h2 class="text-xl font-semibold mb-4">Next Steps</h2>
+            <p class="mb-4">Pay ₹120 for detailed report and lender information</p>
+            
+            <div class="payment-amount">Amount to Pay: ₹120</div>
+            
+            <button class="btn btn-accent">
+                <i class="fas fa-lock mr-2"></i> Pay Now
+            </button>
+            
+            <div class="mt-4 text-sm text-gray-600">
+                <p>Your detailed report will include:</p>
+                <ul class="list-disc list-inside mt-2">
+                    <li>Comprehensive AI analysis</li>
+                    <li>Detailed creditworthiness assessment</li>
+                    <li>Multiple lender contact information</li>
+                    <li>Personalized loan recommendations</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Application Details -->
+        <div class="mt-8">
+            <h2 class="text-xl font-semibold mb-4">Application Details</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h3 class="font-semibold mb-2">Loan Information</h3>
+                    <div class="offer-detail">
+                        <span class="offer-label">Loan Amount</span>
+                        <span class="offer-value">₹5,00,000</span>
+                    </div>
+                    <div class="offer-detail">
+                        <span class="offer-label">Purpose</span>
+                        <span class="offer-value">Business Expansion</span>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h3 class="font-semibold mb-2">Personal Information</h3>
+                    <div class="offer-detail">
+                        <span class="offer-label">Name</span>
+                        <span class="offer-value">John Doe</span>
+                    </div>
+                    <div class="offer-detail">
+                        <span class="offer-label">Employment</span>
+                        <span class="offer-value">Salaried</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="mt-8">
+            <h2 class="text-xl font-semibold mb-4">Recent Updates</h2>
+            <div class="notification">
+                <p class="font-semibold">Application received and processing started</p>
+                <p class="notification-time">2 hours ago</p>
+            </div>
+            <div class="notification">
+                <p class="font-semibold">Document verification completed</p>
+                <p class="notification-time">1 hour ago</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 LoanAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
